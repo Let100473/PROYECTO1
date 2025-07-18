@@ -1,0 +1,24 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
+<header class="w-full bg-white dark:bg-gray-900 shadow-md transition-colors duration-300">
+  <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+    <!-- Logo -->
+    <div class="flex items-center gap-2">
+      <img src="/favicon.svg" alt="Logo Curso Cocina Italiana" class="h-8 w-8" />
+      <span class="font-bold text-lg tracking-wide text-amber-700 dark:text-amber-300">Cocina Italiana</span>
+    </div>
+    <!-- Nav -->
+    <nav aria-label="Menú principal" class="hidden md:flex gap-8">
+      <a href="/" class="text-gray-700 dark:text-gray-100 hover:text-amber-700 dark:hover:text-amber-300 font-medium transition-colors">Inicio</a>
+      <a href="/recetas" class="text-gray-700 dark:text-gray-100 hover:text-amber-700 dark:hover:text-amber-300 font-medium transition-colors">Recetas</a>
+      <a href="/galeria" class="text-gray-700 dark:text-gray-100 hover:text-amber-700 dark:hover:text-amber-300 font-medium transition-colors">Galería</a>
+      <a href="/testimonios" class="text-gray-700 dark:text-gray-100 hover:text-amber-700 dark:hover:text-amber-300 font-medium transition-colors">Testimonios</a>
+      <a href="/contacto" class="text-gray-700 dark:text-gray-100 hover:text-amber-700 dark:hover:text-amber-300 font-medium transition-colors">Contacto</a>
+    </nav>
+    <!-- Theme Toggle -->
+    <div class="flex items-center gap-2">
+      <ThemeToggle />
+    </div>
+  </div>
+</header> 

@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout 
+  title="Recetas Auténticas - Curso de Cocina Italiana"
+  description="Descubre recetas auténticas italianas paso a paso. Aprende a preparar platos tradicionales como un verdadero chef italiano."
+>
+  <section class="py-16 px-4 bg-gradient-to-b from-amber-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-amber-700 dark:text-amber-300 mb-8">Recetas Auténticas Italianas</h1>
+      <p class="text-lg text-gray-700 dark:text-gray-200 mb-12 leading-relaxed">
+        Descubre los secretos de la cocina italiana tradicional. Recetas auténticas transmitidas de generación en generación.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Receta Carbonara -->
+      <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden mb-12">
+        <div class="h-64 bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+          <span class="text-8xl">🍝</span>
+        </div>
+        <div class="p-8">
+          <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">Pasta Carbonara Auténtica</h2>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            La verdadera carbonara romana, sin crema, solo con huevos, queso pecorino, panceta y pimienta negra.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Ingredientes (4 porciones)</h3>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <li>• 400g de spaghetti</li>
+                <li>• 200g de panceta o guanciale</li>
+                <li>• 4 yemas de huevo + 1 huevo completo</li>
+                <li>• 100g de queso pecorino romano rallado</li>
+                <li>• 50g de queso parmesano rallado</li>
+                <li>• Pimienta negra recién molida</li>
+                <li>• Sal para el agua de la pasta</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Tiempo de preparación</h3>
+              <div class="space-y-2 text-gray-600 dark:text-gray-300">
+                <p>⏱️ <strong>Preparación:</strong> 10 minutos</p>
+                <p>🔥 <strong>Cocción:</strong> 15 minutos</p>
+                <p>⭐ <strong>Dificultad:</strong> Intermedia</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Instrucciones</h3>
+            <ol class="space-y-4 text-gray-600 dark:text-gray-300">
+              <li class="flex">
+                <span class="font-bold text-amber-600 dark:text-amber-400 mr-3">1.</span>
+                <span>Corta la panceta en cubos pequeños y dórala en una sartén grande a fuego medio hasta que esté crujiente. Reserva.</span>
+              </li>
+              <li class="flex">
+                <span class="font-bold text-amber-600 dark:text-amber-400 mr-3">2.</span>
+                <span>Cocina la pasta en agua con sal abundante hasta que esté al dente (1-2 minutos menos que lo indicado en el paquete).</span>
+              </li>
+              <li class="flex">
+                <span class="font-bold text-amber-600 dark:text-amber-400 mr-3">3.</span>
+                <span>En un bowl, bate las yemas, el huevo completo, el queso rallado y abundante pimienta negra.</span>
+              </li>
+              <li class="flex">
+                <span class="font-bold text-amber-600 dark:text-amber-400 mr-3">4.</span>
+                <span>Escurre la pasta reservando 1 taza del agua de cocción.</span>
+              </li>
+              <li class="flex">
+                <span class="font-bold text-amber-600 dark:text-amber-400 mr-3">5.</span>
+                <span>Vuelve la pasta a la sartén con la panceta, apaga el fuego y agrega la mezcla de huevos revolviendo rápidamente.</span>
+              </li>
+              <li class="flex">
+                <span class="font-bold text-amber-600 dark:text-amber-400 mr-3">6.</span>
+                <span>Agrega agua de cocción si es necesario para crear una salsa cremosa. Sirve inmediatamente con más queso rallado.</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="mt-8 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+            <h4 class="font-semibold text-amber-800 dark:text-amber-200 mb-2">💡 Consejo del Chef</h4>
+            <p class="text-amber-700 dark:text-amber-300">
+              Nunca uses crema en la carbonara auténtica. El secreto está en la mezcla de huevos y queso que crea la salsa cremosa naturalmente.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Más recetas próximamente -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">Más recetas próximamente</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+          Estamos preparando más recetas auténticas: Risotto ai Funghi, Pizza Margherita, Tiramisú y más.
+        </p>
+        <a href="/inscripcion" class="inline-block px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-colors">
+          ¡Inscríbete para aprender más!
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout> 
