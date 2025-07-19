@@ -1,0 +1,476 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Productos de Comida Italiana - Tienda Online"
+  description="Descubre nuestra selección de productos italianos auténticos: pastas, salsas, quesos, vinos y más. Envío a domicilio disponible."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 py-20 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-amber-800 dark:text-amber-200 mb-6">
+        🍝 Productos Italianos Auténticos
+      </h1>
+      <p class="text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+        Descubre nuestra selección premium de productos italianos importados directamente desde Italia. 
+        Desde pastas artesanales hasta quesos añejados, todo lo que necesitas para recrear la auténtica experiencia italiana en tu hogar.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <span class="px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 rounded-full text-sm font-medium">
+          🚚 Envío Gratis +$50
+        </span>
+        <span class="px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
+          ⭐ Productos Premium
+        </span>
+        <span class="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
+          🇮🇹 100% Italiano
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorías -->
+  <section class="py-16 px-4 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-12">
+        Nuestras Categorías
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <button class="category-btn active" data-category="todos">
+          <span class="text-2xl">🍽️</span>
+          <span class="text-sm font-medium">Todos</span>
+        </button>
+        <button class="category-btn" data-category="pastas">
+          <span class="text-2xl">🍝</span>
+          <span class="text-sm font-medium">Pastas</span>
+        </button>
+        <button class="category-btn" data-category="salsas">
+          <span class="text-2xl">🥫</span>
+          <span class="text-sm font-medium">Salsas</span>
+        </button>
+        <button class="category-btn" data-category="quesos">
+          <span class="text-2xl">🧀</span>
+          <span class="text-sm font-medium">Quesos</span>
+        </button>
+        <button class="category-btn" data-category="vinos">
+          <span class="text-2xl">🍷</span>
+          <span class="text-sm font-medium">Vinos</span>
+        </button>
+        <button class="category-btn" data-category="aceites">
+          <span class="text-2xl">🫒</span>
+          <span class="text-sm font-medium">Aceites</span>
+        </button>
+        <button class="category-btn" data-category="postres">
+          <span class="text-2xl">🍰</span>
+          <span class="text-sm font-medium">Postres</span>
+        </button>
+        <button class="category-btn" data-category="especias">
+          <span class="text-2xl">🌿</span>
+          <span class="text-sm font-medium">Especias</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Productos -->
+  <section class="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="productos-grid">
+        
+        <!-- Pasta Spaghetti -->
+        <div class="producto-card" data-category="pastas">
+          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900 dark:to-orange-900 flex items-center justify-center">
+              <span class="text-6xl">🍝</span>
+              <div class="absolute top-2 right-2">
+                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">Popular</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                Spaghetti di Gragnano DOP
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                Pasta artesanal de Gragnano, elaborada con sémola de trigo duro y agua de manantial. Textura perfecta y sabor auténtico.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-amber-600 dark:text-amber-400">$12.99</span>
+                <span class="text-sm text-gray-500 line-through">$15.99</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex text-amber-400">
+                  <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <span class="text-sm text-gray-500">500g</span>
+              </div>
+              <button class="w-full mt-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
+                🛒 Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Salsa Pomodoro -->
+        <div class="producto-card" data-category="salsas">
+          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 bg-gradient-to-br from-red-100 to-pink-100 dark:from-red-900 dark:to-pink-900 flex items-center justify-center">
+              <span class="text-6xl">🥫</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                Salsa Pomodoro San Marzano
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                Salsa de tomates San Marzano cultivados en las laderas del Vesubio. Dulce, aromática y perfecta para cualquier pasta.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-amber-600 dark:text-amber-400">$8.99</span>
+                <span class="text-sm text-gray-500 line-through">$11.99</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex text-amber-400">
+                  <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <span class="text-sm text-gray-500">400ml</span>
+              </div>
+              <button class="w-full mt-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
+                🛒 Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Queso Parmigiano -->
+        <div class="producto-card" data-category="quesos">
+          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 bg-gradient-to-br from-yellow-100 to-amber-100 dark:from-yellow-900 dark:to-amber-900 flex items-center justify-center">
+              <span class="text-6xl">🧀</span>
+              <div class="absolute top-2 right-2">
+                <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full">Premium</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                Parmigiano Reggiano DOP 24 meses
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                El "Rey de los Quesos" añejado por 24 meses. Sabor intenso, textura cristalina y aroma inconfundible.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-amber-600 dark:text-amber-400">$24.99</span>
+                <span class="text-sm text-gray-500 line-through">$29.99</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex text-amber-400">
+                  <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <span class="text-sm text-gray-500">200g</span>
+              </div>
+              <button class="w-full mt-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
+                🛒 Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vino Chianti -->
+        <div class="producto-card" data-category="vinos">
+          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 bg-gradient-to-br from-purple-100 to-red-100 dark:from-purple-900 dark:to-red-900 flex items-center justify-center">
+              <span class="text-6xl">🍷</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                Chianti Classico DOCG
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                Vino tinto de la Toscana con notas de cereza, violetas y especias. Perfecto para acompañar carnes y pastas.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-amber-600 dark:text-amber-400">$18.99</span>
+                <span class="text-sm text-gray-500 line-through">$22.99</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex text-amber-400">
+                  <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <span class="text-sm text-gray-500">750ml</span>
+              </div>
+              <button class="w-full mt-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
+                🛒 Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aceite de Oliva -->
+        <div class="producto-card" data-category="aceites">
+          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 bg-gradient-to-br from-green-100 to-yellow-100 dark:from-green-900 dark:to-yellow-900 flex items-center justify-center">
+              <span class="text-6xl">🫒</span>
+              <div class="absolute top-2 right-2">
+                <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full">Extra Virgen</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                Aceite de Oliva Extra Virgen Toscano
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                Aceite de oliva extra virgen de primera prensada en frío. Frutado, picante y con notas herbáceas.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-amber-600 dark:text-amber-400">$15.99</span>
+                <span class="text-sm text-gray-500 line-through">$19.99</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex text-amber-400">
+                  <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <span class="text-sm text-gray-500">500ml</span>
+              </div>
+              <button class="w-full mt-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
+                🛒 Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tiramisú -->
+        <div class="producto-card" data-category="postres">
+          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 bg-gradient-to-br from-brown-100 to-amber-100 dark:from-brown-900 dark:to-amber-900 flex items-center justify-center">
+              <span class="text-6xl">🍰</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                Tiramisú Artesanal
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                Postre tradicional italiano con mascarpone, café espresso y cacao. Elaborado con ingredientes premium.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-amber-600 dark:text-amber-400">$9.99</span>
+                <span class="text-sm text-gray-500 line-through">$12.99</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex text-amber-400">
+                  <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <span class="text-sm text-gray-500">250g</span>
+              </div>
+              <button class="w-full mt-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
+                🛒 Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Albahaca Fresca -->
+        <div class="producto-card" data-category="especias">
+          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900 dark:to-emerald-900 flex items-center justify-center">
+              <span class="text-6xl">🌿</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                Albahaca Genovesa Fresca
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                Albahaca genovesa cultivada orgánicamente. Aroma intenso y sabor dulce, perfecta para pesto y salsas.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-amber-600 dark:text-amber-400">$4.99</span>
+                <span class="text-sm text-gray-500 line-through">$6.99</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex text-amber-400">
+                  <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <span class="text-sm text-gray-500">50g</span>
+              </div>
+              <button class="w-full mt-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
+                🛒 Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ravioles -->
+        <div class="producto-card" data-category="pastas">
+          <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 flex items-center justify-center">
+              <span class="text-6xl">🥟</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                Ravioles de Ricotta y Espinacas
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                Ravioles artesanales rellenos de ricotta fresca y espinacas. Pasta fresca elaborada a mano.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-amber-600 dark:text-amber-400">$16.99</span>
+                <span class="text-sm text-gray-500 line-through">$19.99</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex text-amber-400">
+                  <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <span class="text-sm text-gray-500">400g</span>
+              </div>
+              <button class="w-full mt-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
+                🛒 Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Beneficios -->
+  <section class="py-16 px-4 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-12">
+        ¿Por qué comprar con nosotros?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-amber-100 dark:bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">🚚</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Envío Rápido</h3>
+          <p class="text-gray-600 dark:text-gray-300">Entrega en 24-48 horas en toda la ciudad</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">🇮🇹</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">100% Italiano</h3>
+          <p class="text-gray-600 dark:text-gray-300">Productos importados directamente desde Italia</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">💯</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Garantía de Calidad</h3>
+          <p class="text-gray-600 dark:text-gray-300">Si no te gusta, te devolvemos tu dinero</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 px-4 bg-gradient-to-r from-amber-600 to-orange-600">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        ¿Listo para cocinar como un verdadero italiano?
+      </h2>
+      <p class="text-xl text-amber-100 mb-8">
+        Suscríbete a nuestro newsletter y recibe 10% de descuento en tu primera compra
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="Tu email" 
+          class="flex-1 px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-300"
+        >
+        <button class="px-6 py-3 bg-white text-amber-600 font-semibold rounded-lg hover:bg-amber-50 transition-colors">
+          Suscribirse
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .category-btn {
+      @apply flex flex-col items-center gap-2 p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-200;
+    }
+    
+    .category-btn.active {
+      @apply bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 shadow-lg;
+    }
+    
+    .producto-card {
+      @apply transition-all duration-300;
+    }
+    
+    .producto-card:hover {
+      @apply transform scale-105;
+    }
+  </style>
+
+  <script>
+    // Filtrado de productos por categoría
+    document.addEventListener('DOMContentLoaded', function() {
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      const productos = document.querySelectorAll('.producto-card');
+      
+      categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const category = this.dataset.category;
+          
+          // Remover clase active de todos los botones
+          categoryBtns.forEach(b => b.classList.remove('active'));
+          // Agregar clase active al botón clickeado
+          this.classList.add('active');
+          
+          // Filtrar productos
+          productos.forEach(producto => {
+            if (category === 'todos' || producto.dataset.category === category) {
+              producto.style.display = 'block';
+            } else {
+              producto.style.display = 'none';
+            }
+          });
+        });
+      });
+      
+      // Funcionalidad de agregar al carrito
+      const addToCartBtns = document.querySelectorAll('button');
+      addToCartBtns.forEach(btn => {
+        if (btn.textContent.includes('Agregar al Carrito')) {
+          btn.addEventListener('click', function() {
+            // Obtener información del producto desde el DOM
+            const productCard = this.closest('.producto-card');
+            if (!productCard) return;
+            
+            const productName = productCard.querySelector('h3')?.textContent || '';
+            const productPrice = parseFloat(productCard.querySelector('.text-2xl')?.textContent?.replace('$', '') || '0');
+            const productWeight = productCard.querySelector('.text-sm.text-gray-500')?.textContent || '';
+            const productImage = productCard.querySelector('.text-6xl')?.textContent || '🍽️';
+            
+            // Crear objeto del producto
+            const producto = {
+              id: productName.toLowerCase().replace(/\s+/g, '-'),
+              name: productName,
+              price: productPrice,
+              image: productImage,
+              weight: productWeight
+            };
+            
+            // Agregar al carrito si está disponible
+            if (window.cartManager) {
+              window.cartManager.addItem(producto);
+              
+              // Animación de confirmación
+              const originalText = this.textContent;
+              this.textContent = '✅ Agregado!';
+              this.classList.add('bg-green-600');
+              this.classList.remove('bg-amber-600', 'hover:bg-amber-700');
+              
+              setTimeout(() => {
+                this.textContent = originalText;
+                this.classList.remove('bg-green-600');
+                this.classList.add('bg-amber-600', 'hover:bg-amber-700');
+              }, 2000);
+            }
+          });
+        }
+      });
+    });
+  </script>
+</BaseLayout> 

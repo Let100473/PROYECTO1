@@ -1,0 +1,243 @@
+---
+// Modal del carrito de compras
+---
+<div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full max-h-[80vh] overflow-hidden">
+      <!-- Header -->
+      <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">🛒 Tu Carrito</h2>
+        <button 
+          id="close-cart" 
+          class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          aria-label="Cerrar carrito"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Contenido del carrito -->
+      <div class="p-6 overflow-y-auto max-h-96">
+        <div id="cart-items" class="space-y-4">
+          <!-- Los items se cargan dinámicamente -->
+        </div>
+        
+        <!-- Carrito vacío -->
+        <div id="empty-cart" class="text-center py-8 hidden">
+          <span class="text-6xl mb-4 block">🛒</span>
+          <p class="text-gray-500 dark:text-gray-400 mb-4">Tu carrito está vacío</p>
+          <button 
+            id="continue-shopping" 
+            class="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors"
+          >
+            Continuar Comprando
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer con total -->
+      <div class="p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-lg font-semibold text-gray-800 dark:text-gray-100">Total:</span>
+          <span id="cart-total" class="text-2xl font-bold text-amber-600 dark:text-amber-400">$0.00</span>
+        </div>
+        <button 
+          id="checkout-btn" 
+          class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          Proceder al Pago
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  class CartManager {
+    constructor() {
+      this.cart = [];
+      this.loadCart();
+      this.initializeElements();
+      this.bindEvents();
+      this.renderCart();
+    }
+
+    loadCart() {
+      const savedCart = localStorage.getItem('cart');
+      this.cart = savedCart ? JSON.parse(savedCart) : [];
+    }
+
+    saveCart() {
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+      window.dispatchEvent(new CustomEvent('cartUpdated'));
+    }
+
+    initializeElements() {
+      this.modal = document.getElementById('cart-modal');
+      this.itemsContainer = document.getElementById('cart-items');
+      this.emptyCart = document.getElementById('empty-cart');
+      this.totalElement = document.getElementById('cart-total');
+      this.checkoutBtn = document.getElementById('checkout-btn');
+    }
+
+    bindEvents() {
+      // Abrir carrito
+      const cartIcon = document.getElementById('cart-icon');
+      if (cartIcon) {
+        cartIcon.addEventListener('click', () => this.openCart());
+      }
+
+      // Cerrar carrito
+      const closeCart = document.getElementById('close-cart');
+      if (closeCart) {
+        closeCart.addEventListener('click', () => this.closeCart());
+      }
+
+      // Continuar comprando
+      const continueShopping = document.getElementById('continue-shopping');
+      if (continueShopping) {
+        continueShopping.addEventListener('click', () => this.closeCart());
+      }
+
+      // Cerrar con Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') this.closeCart();
+      });
+
+      // Cerrar al hacer clic fuera del modal
+      if (this.modal) {
+        this.modal.addEventListener('click', (e) => {
+          if (e.target === this.modal) this.closeCart();
+        });
+      }
+
+      // Checkout
+      if (this.checkoutBtn) {
+        this.checkoutBtn.addEventListener('click', () => this.checkout());
+      }
+    }
+
+    addItem(item) {
+      const existingItem = this.cart.find(cartItem => cartItem.id === item.id);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        this.cart.push({ ...item, quantity: 1 });
+      }
+      
+      this.saveCart();
+      this.renderCart();
+    }
+
+    removeItem(id) {
+      this.cart = this.cart.filter(item => item.id !== id);
+      this.saveCart();
+      this.renderCart();
+    }
+
+    updateQuantity(id, quantity) {
+      const item = this.cart.find(item => item.id === id);
+      if (item) {
+        if (quantity <= 0) {
+          this.removeItem(id);
+        } else {
+          item.quantity = quantity;
+          this.saveCart();
+          this.renderCart();
+        }
+      }
+    }
+
+    renderCart() {
+      if (!this.itemsContainer || !this.emptyCart || !this.totalElement || !this.checkoutBtn) return;
+
+      if (this.cart.length === 0) {
+        this.itemsContainer.innerHTML = '';
+        this.emptyCart.classList.remove('hidden');
+        this.totalElement.textContent = '$0.00';
+        this.checkoutBtn.setAttribute('disabled', 'true');
+        return;
+      }
+
+      this.emptyCart.classList.add('hidden');
+      this.checkoutBtn.removeAttribute('disabled');
+
+      this.itemsContainer.innerHTML = this.cart.map(item => `
+        <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900 dark:to-orange-900 rounded-lg flex items-center justify-center">
+            <span class="text-2xl">${item.image}</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-semibold text-gray-800 dark:text-gray-100 truncate">${item.name}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">${item.weight}</p>
+            <p class="text-amber-600 dark:text-amber-400 font-semibold">$${item.price.toFixed(2)}</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button 
+              class="w-8 h-8 bg-gray-200 dark:bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
+              onclick="cartManager.updateQuantity('${item.id}', ${item.quantity - 1})"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20 12H4"/>
+              </svg>
+            </button>
+            <span class="w-8 text-center font-semibold text-gray-800 dark:text-gray-100">${item.quantity}</span>
+            <button 
+              class="w-8 h-8 bg-gray-200 dark:bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
+              onclick="cartManager.updateQuantity('${item.id}', ${item.quantity + 1})"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 4v16m8-8H4"/>
+              </svg>
+            </button>
+          </div>
+          <button 
+            class="text-red-500 hover:text-red-700 transition-colors"
+            onclick="cartManager.removeItem('${item.id}')"
+            aria-label="Eliminar producto"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+            </svg>
+          </button>
+        </div>
+      `).join('');
+
+      const total = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      this.totalElement.textContent = `$${total.toFixed(2)}`;
+    }
+
+    openCart() {
+      if (this.modal) {
+        this.modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    closeCart() {
+      if (this.modal) {
+        this.modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    checkout() {
+      // Aquí se implementaría la lógica de checkout
+      alert('¡Gracias por tu compra! Esta es una demo. En una aplicación real, aquí se procesaría el pago.');
+      this.cart = [];
+      this.saveCart();
+      this.renderCart();
+      this.closeCart();
+    }
+  }
+
+  // Inicializar el carrito
+  const cartManager = new CartManager();
+  
+  // Hacer disponible globalmente para los botones de productos
+  window.cartManager = cartManager;
+</script> 

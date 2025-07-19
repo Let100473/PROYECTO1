@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CartModal from '../components/CartModal.astro';
 const {
   title = 'Curso de Cocina Italiana para Principiantes',
   description = 'Aprende a cocinar platos italianos deliciosos desde cero en un ambiente cálido y acogedor.',
@@ -38,5 +39,6 @@ const {
       <slot />
     </main>
     <Footer />
+    <CartModal />
   </body>
 </html> 
